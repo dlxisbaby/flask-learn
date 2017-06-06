@@ -43,12 +43,12 @@ class Post(db.Model):
     def __repr__(self):
         return "<Post '{}'>".format(self.title)
     
-class Comment(db.model):
+class Comment(db.Model):
     id = db.Column(db.Integer(),primary_key=True)
     name = db.Column(db.String(255))
     text = db.Column(db.Text())
     date = db.Column(db.DateTime())
-    post_id = db.Column(db.Integer(),ForeignKey='post.id')
+    post_id = db.Column(db.Integer(),db.ForeignKey('post.id'))
     
     def __repr__(self):
         return "<Comment '{}'>".format(self.text[:15])
